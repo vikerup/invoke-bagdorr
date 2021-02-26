@@ -12,7 +12,7 @@ $check3=Get-ItemProperty -Path HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Contr
 if($check3.RunAsPPL -ne 1){ write-host 'RunAsPPL not set' -BackgroundColor Red }
 if($check3.RunASPPL -eq 1){ write-host 'RunASPPL set' -BackgroundColor Gren }
 
-$DevGuard = Get-CimInstance –ClassName Win32_DeviceGuard –Namespace root\Microsoft\Windows\DeviceGuard -ErrorAction SilentlyContinue
+$DevGuard = Get-CimInstance –ClassName Win32_DeviceGuard –Namespace "root\Microsoft\Windows\DeviceGuard" -ErrorAction SilentlyContinue
 if($DevGuard.SecurityServicesConfigured -contains '0'){ write-host 'CredentialGuard not configured' -BackgroundColor Red }
 if($DevGuard.SecurityServicesConfigured -contains '1'){ write-host 'CredentialGuard configured' -BackgroundColor Green }
 if($DevGuard.SecurityServicesRunning -contains '0'){ write-host 'CredentialGuard not running' -BackgroundColor Red }
